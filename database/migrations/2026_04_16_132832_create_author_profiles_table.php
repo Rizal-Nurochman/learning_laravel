@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('author_profiles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->unique()->constrained()->cascadeOnDelete();
+            $table->text('bio')->nullable();
+            $table->string('portofolio_url')->nullable();
+            $table->jsonb('social_links')->nullable();
             $table->timestamps();
         });
     }
